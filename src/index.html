@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>todoApp</title>
+    <link rel="stylesheet" href="../dist/output.css" />
+  </head>
+  <body>
+    <div
+      class="flex flex-col items-center justify-start min-h-screen bg-neutral-950 text-white p-4 font-sans"
+    >
+      <div class="w-full max-w-md">
+        <!-- header -->
+        <div class="flex items-center mb-6">
+          <h1 class="text-4xl font-bold text-gray-200">Today's Tasks</h1>
+        </div>
+        <!-- Task Input with Priority and Due Date -->
+        <div
+          class="flex flex-col space-y-4 mb-6 p-4 rounded-xl shadow-lg border border-neutral-700 bg-neutral-800"
+        >
+          <div class="flex items-center space-x-2">
+            <input
+              type="text"
+              placeholder="Add a new task..."
+              class="flex-grow bg-transparent text-gray-300 placeholder-gray-500 border-b border-gray-600 focus:border-indigo-600 outline-none p-2 transition-colors duration-200"
+              id="todoInput"
+            />
+            <button
+              id="addTodoButton"
+              class="p-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors duration-200 cursor-pointer"
+              aria-label="Add task"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-plus-icon lucide-plus stroke-2 w-6 h-6"
+              >
+                <path d="M5 12h14" />
+                <path d="M12 5v14" />
+              </svg>
+            </button>
+            <button
+              id="editTodoButton"
+              class="hidden p-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors duration-200 cursor-pointer"
+              aria-label="Add task"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-pencil-icon lucide-pencil stroke-2 w-6 h-6"
+              >
+                <path
+                  d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"
+                />
+                <path d="m15 5 4 4" />
+              </svg>
+            </button>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex space-x-2">
+              <span class="text-gray-400 text-sm self-center">Priority:</span>
+              <button
+                data-priority="high"
+                class="priorityButton w-6 h-6 bg-red-500 rounded-full transition-all duration-200 cursor-pointer ring-red-500"
+                aria-label="Set priority to high"
+              ></button>
+              <button
+                data-priority="medium"
+                class="priorityButton w-6 h-6 bg-yellow-500 rounded-full transition-all duration-200 cursor-pointer ring-yellow-500"
+                aria-label="Set priority to high"
+              ></button>
+              <button
+                data-priority="low"
+                class="priorityButton w-6 h-6 bg-green-500 rounded-full transition-all duration-200 cursor-pointer ring-green-500"
+                aria-label="Set priority to high"
+              ></button>
+            </div>
+            <div class="flex items-center text-gray-400">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-calendar-icon lucide-calendar"
+              >
+                <path d="M8 2v4" />
+                <path d="M16 2v4" />
+                <rect width="18" height="18" x="3" y="4" rx="2" />
+                <path d="M3 10h18" />
+              </svg>
+              <input
+                id="todoDateInput"
+                type="date"
+                class="bg-transparent border-none outline-none text-gray-300 text-sm p-2"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Filters Buttons -->
+        <div class="flex items-center justify-between space-x-2 mb-6">
+          <button
+            data-filter="all"
+            class="filterButton flex-1 py-2 rounded-lg text-sm font-medium transition-colors duration-200 bg-indigo-600 text-white shadow-lg cursor-pointer"
+          >
+            All
+          </button>
+          <button
+            data-filter="unfinished"
+            class="filterButton flex-1 py-2 rounded-lg text-sm font-medium transition-colors duration-200 bg-neutral-800 text-gray-400 hover:bg-neutral-700 cursor-pointer"
+          >
+            Unfinished
+          </button>
+          <button
+            data-filter="in-progress"
+            class="filterButton flex-1 py-2 rounded-lg text-sm font-medium transition-colors duration-200 bg-neutral-800 text-gray-400 hover:bg-neutral-700 cursor-pointer"
+          >
+            In progress
+          </button>
+          <button
+            data-filter="completed"
+            class="filterButton flex-1 py-2 rounded-lg text-sm font-medium transition-colors duration-200 bg-neutral-800 text-gray-400 hover:bg-neutral-700 cursor-pointer"
+          >
+            Completed
+          </button>
+        </div>
+        <!-- Todo List -->
+        <div class="space-y-4" id="todoList"></div>
+      </div>
+    </div>
+    <script src="./js/app.js"></script>
+  </body>
+</html>
