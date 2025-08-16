@@ -56,9 +56,11 @@ const highlightPriorityButton = (priority) => {
 const handleAddTodo = () => {
   const todoInput = document.getElementById("todoInput");
   const dateInput = document.getElementById("todoDateInput");
+  const alert = document.querySelector(".alert");
   const now = new Date();
 
-  if (!todoInput.value.trim()) return console.log("Please fill in the input");
+  if (!todoInput.value.trim()) return alert.classList.remove("hidden");
+  alert.classList.add("hidden");
 
   const newTodo = {
     id: Date.now(),
@@ -249,6 +251,7 @@ const deleteTodo = (todo) => {
 const editTodo = (todo) => {
   const todoInput = document.getElementById("todoInput");
   const dateInput = document.getElementById("todoDateInput");
+  const alert = document.querySelector(".alert");
 
   todoInput.value = todo.text;
   dateInput.value = formatDate(todo.date);
@@ -259,6 +262,9 @@ const editTodo = (todo) => {
   addBtn.classList.add("hidden");
 
   const newClickHandler = () => {
+    if (!todoInput.value.trim()) return alert.classList.remove("hidden");
+    alert.classList.add("hidden");
+
     const todos = loadFromStorage("todos").map((t) =>
       t.id === todo.id
         ? {
